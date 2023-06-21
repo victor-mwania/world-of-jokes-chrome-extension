@@ -1,19 +1,18 @@
 {
-    "name": "World of Jokes ",
-    "version": "1.0.0",
-    "description": "Get jokes from around the world",
-    "manifest_version": 3,
-    "author": "Victor Mwania",
-    "background": {
-        "service_worker": "background.js"
-    },
-    "permissions": [
-        "storage",
-        "scripting",
-     "tabs"
-      ],
-      "action": {
-        "default_popup": "popup.html"
-      }
-    
+  "name": "World of Jokes ",
+  "version": "1.0.0",
+  "description": "Get jokes from around the world",
+  "manifest_version": 3,
+  "author": "Victor Mwania",
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": [
+    "storage",
+    "scripting",
+    "tabs"
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  }
 }

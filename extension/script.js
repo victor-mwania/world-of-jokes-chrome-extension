@@ -13,9 +13,10 @@ let db;
 
 async function onStartup() {
     const dataExistsInIndexedDB = await checkDataExistsInIndexedDB(db);
-    const dataExistsInCloudDB = await checkCloudDBData();
-  
-    if (dataExistsInIndexedDB || dataExistsInCloudDB) {
+    if(dataExistsInIndexedDB){
+      getAllJokesAndRender(db);
+    }
+    else if (await checkCloudDBData()) {
       getAllJokesAndRender(db);
     } else {
       await fetchAPIData();
@@ -176,7 +177,7 @@ async function checkCloudDBData() {
  * @returns {Promise<boolean|null>} A promise that resolves with a boolean value indicating success (true) or no data (null).
  */
 async function fetchData() {
-  const url = "http://localhost:3000/api/jokes";
+  const url = "https://world-of-jokes-victor-mwania.vercel.app/api/jokes";
   const options = {
     method: "GET",
   };
@@ -209,7 +210,7 @@ function addJokes(data) {
  */
 async function fetchAPIData() {
   const url =
-    "https://world-of-jokes1.p.rapidapi.com/v1/jokes?limit=1&page=2&sortBy=score%3Adesc";
+    "https://world-of-jokes1.p.rapidapi.com/v1/jokes?limit=30&page=1&sortBy=score%3Adesc";
   const options = {
     method: "GET",
     headers: {
@@ -234,7 +235,7 @@ async function fetchAPIData() {
  */
 
 async function addDataToCloudDB(jokes) {
-  const url = "http://localhost:3000/api/jokes";
+  const url = "https://world-of-jokes-victor-mwania.vercel.app/api/jokes";
   const options = {
     method: "POST",
     body: JSON.stringify(jokes),
