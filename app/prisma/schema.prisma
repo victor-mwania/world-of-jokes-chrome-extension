@@ -1,0 +1,22 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["jsonProtocol"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Joke {
+  id        String   @id
+  score     Int
+  body      String   @db.VarChar
+  category  String   @db.VarChar
+  title     String   @db.VarChar
+  isActive  Boolean
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+
+  @@map("jokes")
+}
