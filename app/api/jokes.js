@@ -18,8 +18,8 @@ const allowCors = fn => async (req, res) => {
 
 
 const handler = async (req, res) => {
-  
-  if(req.method === 'GET'){
+
+  if (req.method === 'GET') {
 
     const prisma = new PrismaClient();
 
@@ -34,7 +34,7 @@ const handler = async (req, res) => {
 
   }
 
-  if(req.method === 'POST' || req.me){
+  if (req.method === 'POST') {
     const prisma = new PrismaClient();
 
     const data = [...req.body]
@@ -54,7 +54,7 @@ const handler = async (req, res) => {
     });
 
   }
-   else {
+  else {
     console.log(404)
   }
 }
